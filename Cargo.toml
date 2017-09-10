@@ -1,11 +1,11 @@
 [package]
-name = "rollsum"
-version = "0.2.1"
-authors = ["Aidan Hobson Sayers <aidanhs@cantab.net>"]
+name = "rdedup-cdc"
+version = "0.1.0"
+authors = ["Aidan Hobson Sayers <aidanhs@cantab.net>", "Dawid Ciężarkiewicz <dpc@dpc.pw>"]
 repository = "https://github.com/aidanhs/rsroll"
 documentation = "http://aidanhs.github.io/rsroll/"
 readme = "README.md"
-description = "Rolling checksum implementation"
+description = "Content defined chunking (and rolling hash) algos"
 license = "BSD-3-Clause"
 
 [features]

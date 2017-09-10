@@ -1,33 +1,8 @@
-rollsum is based on bupsplit, which in turn is based on rsync chunking.
+This is a fork of [`rollsum` crate](https://github.com/aidanhs/rsroll)
+with some stuff added to be used in [`rdedup`](https://github.com/dpc/rdedup)
+while the situation is figured out on mainline.
 
-Interface liable to change.
-
-http://aidanhs.github.io/rsroll/
-
-```
-extern crate rollsum;
-
-use std::env;
-use std::fs;
-use std::path::Path;
-use std::io::prelude::*;
-
-pub fn main () {
-    let args: Vec<_> = env::args().collect();
-    let mut file = fs::File::open(&Path::new(&args[1])).unwrap();
-    let mut buf = vec![];
-    file.read_to_end(&mut buf).unwrap();
-
-    let mut ofs: usize = 0;
-    while ofs < buf.len() {
-        let mut b = rollsum::Bup::new();
-        if let Some(count) = b.find_chunk_edge(&buf[ofs..]) {
-            ofs += count;
-            println!("found edge at {}", ofs);
-        } else {
-            println!("end of the line!");
-            break
-        }
-    }
-}
-```
+This crate will be under maintaince, until `rdedup` is using it,
+and quite some effort was already put into it. If you're interested
+in using it and/or in polishing this (or the mainstream create), please
+let me know.
